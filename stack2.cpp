@@ -42,7 +42,7 @@ public:
 		};
 	};
 
-	void push(int n) {
+	IntStack operator += (int n) {
 		if (full() == false) {
 			pushed_integers[indice] = n;
 			indice = indice + 1;
@@ -54,7 +54,7 @@ public:
 		};
 	};
 	
-	int pop() {
+	IntStack operator -- () {
 		if (empty() == false) {
 			int temp = pushed_integers[indice - 1];
 			pushed_integers[indice] = 0;
@@ -72,24 +72,24 @@ public:
 
 int main() {
 	IntStack stack (10);
-	stack.push(1);
-	stack.push(2);
-	stack.push(3);
-	stack.pop();
-	stack.pop();
-	stack.pop();
-	stack.pop();
-	stack.push(1);
-	stack.push(2);
-	stack.push(3);
-	stack.push(4);
-	stack.push(5);
-	stack.push(6);
-	stack.push(7);
-	stack.push(8);
-	stack.push(9);
-	stack.push(10);
-	stack.push(11);
+	stack += 1;
+	stack += 2;
+	stack += 3;
+	--stack;
+	--stack;
+	--stack;
+	--stack;
+	stack += 1;
+	stack += 2;
+	stack += 3;
+	stack += 4;
+	stack += 5;
+	stack += 6;
+	stack += 7;
+	stack += 8;
+	stack += 9;
+	stack += 10;
+	stack += 11;
 	{ IntStack stack2 = stack; }
 	stack.print();
 	return 0;
