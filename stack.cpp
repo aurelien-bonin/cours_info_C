@@ -6,23 +6,16 @@ struct IntStack10 {
 	int indice = 0;
 
 	bool empty() {
-		if (indice == 0) {
-			cout << "The stack is empty : { }" << endl;
-		};
 		return indice == 0;
 	};
 	
 	bool full() {
-		if (indice == 9) {
-			cout << "The stack is full : ";
-			print();
-		};
-		return indice == 9;
+		return indice == 10;
 	};
 
 	void print() {
 		if (empty()) {
-			cout << "{}" << endl;
+			cout << "{ }" << endl;
 		} else {
 			cout << "{ ";
 			for (int i = 0;i < indice - 1; i++) {
@@ -41,26 +34,35 @@ struct IntStack10 {
 	};
 
 	void push(int n) {
-		pushed_integers[indice] = n;
-		indice = indice + 1;
-		cout << n << " was pushed into the stack : ";
-		print();
+		if (full == false) {
+			pushed_integers[indice] = n;
+			indice = indice + 1;
+			cout << n << " was pushed into the stack : ";
+			print();
+		}
+		else {
+			cout << "Full stack cannot push new item" << endl;
+		};
 	};
 
 	int pop() {
-		int temp = pushed_integers[indice-1];
-		pushed_integers[indice] = 0;
-		indice = indice - 1;
-		cout << temp << " was popped from the stack : ";
-		print();
-		return temp;
+		if (empty() == false) {
+			int temp = pushed_integers[indice-1];
+			pushed_integers[indice] = 0;
+			indice = indice - 1;
+			cout << temp << " was popped from the stack : ";
+			print();
+			return temp;
+		}
+		else {
+			cout << "Empty stack cannot be popped" << endl;
+		};
 	};
 
 };
 
 int main() {
 	IntStack10 stack;
-	stack.empty();
 	stack.push(1);
 	stack.push(2);
 	stack.push(3);
@@ -74,5 +76,7 @@ int main() {
 	stack.push(7);
 	stack.push(8);
 	stack.push(9);
-	stack.full();
+	stack.push(10);
+	stack.push(11);
+	return 0;
 }
