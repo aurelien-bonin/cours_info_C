@@ -1,15 +1,24 @@
 #include <iostream>
 using namespace std;
 
-struct IntStack {
+class IntStack {
 	int size;
 	int* pushed_integers;
 	int indice = 0;
 
-	void Init (int size) {
+public:
+	IntStack (int size) {
 		this->size = size;
 		this->pushed_integers = new int[size];
-		cout << "Stack size set to " << size << endl;
+	};
+	
+    IntStack (const IntStack& stack){
+	    size = stack.size;
+	    pushed_integers = new int[size];
+	    indice = stack.indice;
+	    for (int i = 0; i <= indice; i++) {
+	        pushed_integers[i] = stack.pushed_integers[i];
+	    };
 	};
 
 	bool empty() {
@@ -44,7 +53,7 @@ struct IntStack {
 			cout << "Full stack cannot push new item" << endl;
 		};
 	};
-
+	
 	int pop() {
 		if (empty() == false) {
 			int temp = pushed_integers[indice - 1];
@@ -62,8 +71,7 @@ struct IntStack {
 };
 
 int main() {
-	IntStack stack;
-	stack.Init(10);
+	IntStack stack (10);
 	stack.push(1);
 	stack.push(2);
 	stack.push(3);
@@ -82,6 +90,7 @@ int main() {
 	stack.push(9);
 	stack.push(10);
 	stack.push(11);
-	
+	{ IntStack stack2 = stack; }
+	stack.print();
 	return 0;
 }
