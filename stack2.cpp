@@ -64,7 +64,6 @@ struct IntStack {
 int main() {
 	IntStack stack;
 	stack.Init(10);
-	stack.empty();
 	stack.push(1);
 	stack.push(2);
 	stack.push(3);
