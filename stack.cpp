@@ -34,7 +34,7 @@ struct IntStack10 {
 	};
 
 	void push(int n) {
-		if (full == false) {
+		if (full() == false) {
 			pushed_integers[indice] = n;
 			indice = indice + 1;
 			cout << n << " was pushed into the stack : ";
