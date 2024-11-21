@@ -118,6 +118,7 @@ public:
     ShapeStack(int size){
         this->size = size;
         this->pushed_shapes = new Shape* [size];
+        cout <<"Shape Stack size set to "<<size<<endl;
     };
     
     bool empty(){
