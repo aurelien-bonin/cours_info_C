@@ -16,7 +16,7 @@ public:
     };
     
     virtual void area() const {
-        cout << "Shape area"<<endl;
+        cout << "\"Shape area\"";
     };
     
     virtual void draw() const {
@@ -34,7 +34,7 @@ public:
     };
     
     void area() const {
-        cout << "Circle area = "<< pi*r*r <<endl;
+        cout << pi*r*r;
     };
     
     void draw() const {
@@ -54,7 +54,7 @@ public :
     };
     
     void area() const {
-        cout << "Rectangle area = "<< l*w <<endl; 
+        cout << l*w; 
     };
     
     void draw() const {
@@ -72,7 +72,7 @@ public:
     };
     
     void area() const {
-        cout << "Square area = "<< a * a << endl;
+        cout << a * a;
     };
     
     void draw() const {
@@ -90,7 +90,7 @@ public:
     };
     
     void area() const {
-        cout << "Equilateral Triangle area = "<< sqrt(3)*a*a/4<<endl;
+        cout << sqrt(3)*a*a/4;
     };
     
     void draw() const {
@@ -135,11 +135,17 @@ public:
         else{
             cout <<"{ ";
             for(int i = 0; i<top-1;i++){
+                cout << "( ";
                 Draw(pushed_shapes[i]);
-                cout<<" ; ";
+                cout << " , ";
+                Area(pushed_shapes[i]);
+                cout << " ) ; "; 
             };
+            cout << "( ";
             Draw(pushed_shapes[top-1]);
-            cout <<" }"<<endl;
+            cout << " , ";
+            Area(pushed_shapes[top-1]);
+            cout <<" ) }"<<endl;
         };
     };
     
@@ -178,16 +184,10 @@ public:
 
 int main() {
     Circle* c = new Circle(1);
-    Area(c);
     Rectangle* r = new Rectangle(1,2);
-    Area(r);
     Shape* s = new Shape();
-    Area(s);
     Square* sq = new Square(4);
-    Area(sq);
     EquiTriangle* t = new EquiTriangle(1);
-    Area(t);
-    
     ShapeStack stack(3);
     stack.push(c);
     stack.push(r);
