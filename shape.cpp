@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 
@@ -19,7 +20,7 @@ public:
     };
     
     virtual void draw() const {
-        cout << "Shape drawing";
+        cout << "\"Shape drawing\"";
     };
 };
 
@@ -76,6 +77,24 @@ public:
     
     void draw() const {
         cout << "|__|";
+    };
+};
+
+
+class EquiTriangle : public Shape {
+public:
+    int a;
+    
+    EquiTriangle(int a) {
+        this->a = a;
+    };
+    
+    void area() const {
+        cout << "Equilateral Triangle area = "<< sqrt(3)*a*a/4<<endl;
+    };
+    
+    void draw() const {
+        cout << "/\\";
     };
 };
 
@@ -166,6 +185,8 @@ int main() {
     Area(s);
     Square* sq = new Square(4);
     Area(sq);
+    EquiTriangle* t = new EquiTriangle(1);
+    Area(t);
     
     ShapeStack stack(3);
     stack.push(c);
@@ -176,7 +197,7 @@ int main() {
     stack.pop();
     stack.pop();
     stack.pop();
+    stack.push(t);
+    stack.push(s);
     return 0;
 };
-
-
