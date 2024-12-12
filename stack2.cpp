@@ -21,6 +21,10 @@ public:
 	    };
 	};
 
+	~IntStack () {
+	    delete[] pushed_integers;
+	}
+
 	bool empty() {
 		return indice == 0;
 	};
